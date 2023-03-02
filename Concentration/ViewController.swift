@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     var ad = ""
-    var oldTag = 15
+    var oldTag = -1
     
     @IBAction func cardButtonTapped(_ sender: UIButton) {
         
