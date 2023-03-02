@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     var emoji = ["🐹","🦞","🐸","💧","🌨","🌫","🐹","🦞","🐸","💧","🌨","🌫"]
     var buttonName = [String]()
     
@@ -27,8 +27,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
+
     @IBOutlet var collectionButtons: [UIButton]!
     
     
@@ -54,45 +53,42 @@ class ViewController: UIViewController {
     
     var ad = ""
     var oldTag = 15
-
+    
     @IBAction func cardButtonTapped(_ sender: UIButton) {
         
         
-         
-           sender.setTitle(buttonName[sender.tag], for: .normal)
-           sender.backgroundColor = .white
-           
-           if (sender.currentTitle == ad) && (sender.tag != oldTag ) {
-               
-               DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                   sender.removeFromSuperview()
-                   self.deleteButtonScore -= 1
-               }
-               
-               for buton in collectionButtons {
-                   if (buton.tag == oldTag) && (buton.currentTitle == ad) {
-                       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                           buton.removeFromSuperview()
-                           self.deleteButtonScore -= 1
-                       }
-                   }
-               }
-           }
-           
-           DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-               
-               sender.setTitle("", for: .normal)
-               sender.backgroundColor = .orange
-               
-           }
-           
-           ad = sender.currentTitle!
-           oldTag = sender.tag
-           Score += 1
-           
-       }
         
-    
-    
+        sender.setTitle(buttonName[sender.tag], for: .normal)
+        sender.backgroundColor = .white
+        
+        if (sender.currentTitle == ad) && (sender.tag != oldTag ) {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                sender.removeFromSuperview()
+                self.deleteButtonScore -= 1
+            }
+            
+            for buton in collectionButtons {
+                if (buton.tag == oldTag) && (buton.currentTitle == ad) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        buton.removeFromSuperview()
+                        self.deleteButtonScore -= 1
+                    }
+                }
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            sender.setTitle("", for: .normal)
+            sender.backgroundColor = .orange
+            
+        }
+        
+        ad = sender.currentTitle!
+        oldTag = sender.tag
+        Score += 1
+        
+    }
+
 }
 
