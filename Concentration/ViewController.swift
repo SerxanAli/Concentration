@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     var ad = ""
-    var tagi = 15
+    var oldTag = 15
 
     @IBAction func cardButtonTapped(_ sender: UIButton) {
         
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
            sender.setTitle(buttonName[sender.tag], for: .normal)
            sender.backgroundColor = .white
            
-           if (sender.currentTitle == ad) && (sender.tag != tagi ) {
+           if (sender.currentTitle == ad) && (sender.tag != oldTag ) {
                
                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                    sender.removeFromSuperview()
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
                }
                
                for buton in collectionButtons {
-                   if (buton.tag == tagi) && (buton.currentTitle == ad) {
+                   if (buton.tag == oldTag) && (buton.currentTitle == ad) {
                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                            buton.removeFromSuperview()
                            self.deleteButtonScore -= 1
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
            }
            
            ad = sender.currentTitle!
-           tagi = sender.tag
+           oldTag = sender.tag
            Score += 1
            
        }
